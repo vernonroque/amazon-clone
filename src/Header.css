@@ -1,0 +1,72 @@
+.header{
+    display:flex;
+    height:60px;
+    align-items:center;
+    background-color:#DA70D6;
+    position:sticky;
+    top:0;
+    z-index: 100;
+}
+.amazon-logo{
+    font-size:3.5rem;
+    object-fit:contain;
+    margin: 0 20px;
+    text-decoration:none;
+    color:black;
+}
+.header-search{
+    display:flex;
+    flex:1;
+    align-items:center;
+    /* border-radius:25px; */
+    /* border:2px red solid; */
+    
+}
+.header-searchInput{
+    height:12px;
+    padding:10px;
+    border:none;
+    width:95%;
+}
+.search-logo{
+    font-size:2rem;
+    padding:2px;
+    height:1.8rem;
+    background:orange;
+}
+.header-nav{
+    display:flex;
+    justify-content:space-evenly;
+}
+.header-option{
+    display:flex;
+    flex-direction:column;
+    margin-left:10px;
+    margin-right:10px;
+}
+.header-optionLineOne{
+    font-size:1rem;
+}
+.header-optionLineTwo{
+    font-size:1rem;
+    font-weight:800;
+}
+.header-optionBasket{
+    display:flex;
+    align-items:center;
+}
+
+.header-basketCount{
+    margin-left:10px;
+    margin-right:10px;
+    text-decoration:none;
+    color:black;
+}
+.basket-logo{
+    font-size:2rem;
+    text-decoration:none;
+    color:black;
+}
+.shoppingBasketLink{
+    text-decoration:none;
+}
