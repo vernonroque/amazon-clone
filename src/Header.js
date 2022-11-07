@@ -5,10 +5,17 @@ import {AiOutlineSearch} from 'react-icons/ai';
 import {MdOutlineShoppingBasket} from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import { useStateValue } from './StateProvider';
+import {auth} from './firebase';
 
 function Header() {
 
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket,user}, dispatch] = useStateValue();
+
+  const handleAuthentication = () => {
+    if(user){
+      auth.signOut();
+    }
+  }
  
 
   return (
@@ -22,11 +29,12 @@ function Header() {
         <AiOutlineSearch className = 'search-logo'/>
       </div>
       <div className="header-nav">
-        <div className = "header-option">
-          <span className = "header-optionLineOne">Hello Guest</span>
-          <span className = "header-optionLineTwo">Sign In</span>
-
-        </div>
+        <Link className = "loginLink" to = {!user && "/login"}> 
+          <div className = "header-option" onClick={handleAuthentication}>
+            <span className = "header-optionLineOne"> {user? 'Hello ' + user?.email :'Hello Guest'}</span>
+            <span className = "header-optionLineTwo">{user ? 'Sign Out':'Sign In'}</span>
+          </div>
+        </Link>
         <div className = "header-option">
           <span className = "header-optionLineOne">Returns</span>
           <span className = "header-optionLineTwo">& Orders</span>
