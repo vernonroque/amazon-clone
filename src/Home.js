@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="home">
         <div className="home-container">
-            <img className="home-image" src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51cRMD1ya-L._SX3000_.jpg"
+            <img className="home-image" src="https://connect-assets.prosple.com/cdn/ff/zNryDlf-uf0qIh0kt7iOyMHP2B0NW30YDNDCOXMU-NM/1578558097/public/2020-01/Banner-Amazon-893x321-2020.jpg"
             alt='home banner'
             />
 
@@ -32,21 +32,21 @@ function Home() {
                 id="13524"
                 title="Ultimate Rare Card Bundle 100 Cards + 5 foil Cards, 5 Rare Cards, 5 Holo Rare Cards, 2 Ultra Rare Cards, Plus a LCC Box That is Compatible with Pokemon Cards"
                 price={29.99}
-                image="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/A1mOqYA-G4S._AC_SX679_.jpg"
+                image="https://m.media-amazon.com/images/I/91ABiuNMdEL._AC_SL1500_.jpg"
                 rating={5}
                 />
                 <Product
                  id="12435"
                 title="Xinlinke Tenor Saxophone Case Lightweight Soft Padded Bb Sax Gig Bag with Backpack Straps"
-                price={69.99}
-                image="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/51PeIqoZoZL._AC_SX679_.jpg"
+                price={70.00}
+                image="https://m.media-amazon.com/images/I/51PeIqoZoZL._AC_SL1000_.jpg"
                 rating={5}
                 />
                 <Product
                 id="21345"
-                title="2021 Apple 10.2-inch iPad (Wi-Fi, 64GB) - Space Gray"
-                price={799}
-                image="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/81MF389-9gS._AC_SX679_.jpg"
+                title="Apple 2021 10.2-inch iPad (Wi-Fi, 64GB) - Space Gray with AppleCare+ (2 Years)"
+                price={348}
+                image="https://m.media-amazon.com/images/I/61NGnpjoRDL._AC_SL1500_.jpg"
                 rating={5}
                 />
             </div>
@@ -54,8 +54,8 @@ function Home() {
                 <Product
                 id="54312"
                 title="BEIWO Puzzle-Starry Night by Vincent Van Gogh Jigsaw Puzzles, 1000 Piece Puzzles for Adults and Kids (Starry Night, Square-1000 Pieces)"
-                price={16.95}
-                image="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/71bhc9a0L-L._AC_SX679_.jpg"
+                price={14.95}
+                image="https://m.media-amazon.com/images/I/81IvdxTfFaL._AC_SL1000_.jpg"
                 rating={5}
                 
                 />

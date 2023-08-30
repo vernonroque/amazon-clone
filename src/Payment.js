@@ -7,41 +7,64 @@ import {CardElement, useStripe, useElements} from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import {getBasketTotal} from "./reducer";
 import axios from './axios';
+import { db } from './firebase';
 
 
 
 
 function Payment() {
 
-    const history = useHistory();
     const [{basket,user}, dispatch] = useStateValue();
-    // console.log('USER EMAIL >>>>', user?.email);
-    const [error,setError] = useState(null);
-    const [disabled,setDisabled] = useState(true);
-    const [processing, setProcessing] = useState("");
-    const [succeeded, setSucceeded] = useState(false);
-    const [clientSecret,setClientSecret] = useState(true);
+    const history = useHistory();
 
     const stripe = useStripe();
     const elements = useElements();
+    
+    const [succeeded, setSucceeded] = useState(false);
+    const [processing, setProcessing] = useState("");
+    const [error,setError] = useState(null);
+    const [disabled,setDisabled] = useState(true);
+    const [clientSecret,setClientSecret] = useState(true);
+
+    
 
     useEffect(() => {
         //generate the special stripe secret which allows us 
         //to charge a customer
 
         const getClientSecret = async () => {
-            const response = await axios({
-                method: 'post',
-                //Stripe expects the total in a currency's subunit
-                url: `/payments/create?total=${getBasketTotal(basket)*100}`
-            });
-            setClientSecret(response.data.clientSecret);
+            console.log('The basket length>>>', basket.length );
+            console.log("ITEMS IN THE BASKET >>>", basket);
+        
+            try{
+                const response = await axios({
+                    method: 'post',
+                    url: `/payments/create?total=${(getBasketTotal(basket)*100)}` //Stripe expects the total in a currency's subunit
+                });
+    
+                if(response){
+                    console.log("THIS IS THE RESPONSE", response);
+                    setClientSecret(response.data.clientSecret);
 
+                }
+                
+            }catch(error){
+                console.log("THE ERROR >>>", error);
+            }
         }
-
-        getClientSecret();
+        
+        if(basket){
+            getClientSecret();
+        }
+           
 
     },[basket]);
+
+    if(basket){
+        console.log('THE CLIENT SECRET >>>', clientSecret);
+    }
+    
+    console.log("THE USER >>>", user);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,9 +78,24 @@ function Payment() {
             }).then(({paymentIntent}) => {
             //paymentIntent = payment confirmation
 
+            db
+                .collection('users')
+                .doc(user?.uid)
+                .collection('orders')
+                .doc(paymentIntent.id)
+                .set({
+                    basket: basket,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created
+                })
+
             setSucceeded(true);
             setError(null);
             setProcessing(false);
+
+            dispatch({
+                type: 'EMPTY_BASKET'
+            })
 
             history.replace('/orders');
 
@@ -97,10 +135,10 @@ function Payment() {
                         <h3>Review Items and Delivery</h3>
                 </div>
                 <div className = 'payment-items'>
-                    {basket.map((item,i) => {
+                    {basket.map(item => {
                         return <CheckoutProduct
-                        key = {i} //added key for each product
-                        item={item.id}
+                        //key = {i} //added key for each product
+                        id={item.id}
                         title={item.title}
                         image={item.image}
                         price={item.price}
