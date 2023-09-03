@@ -2,6 +2,24 @@
     padding: 20px 80px;
 }
 
+.ordersHeader {
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+}
+
 orders >h1 {
     margin: 30px 0;
+}
+.ordersButton{
+    cursor:pointer;
+    background:#f0c14b;
+    border: 1px solid;
+    margin-top:10px;
+    border-color:#a88734 #9c7e31 #846a29;
+    padding:10px;
+}
+.ordersButton:hover {
+    cursor:pointer;
+    
 }

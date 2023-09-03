@@ -1,0 +1,53 @@
+[debug] [2023-09-03T21:27:04.628Z] ----------------------------------------------------------------------
+[debug] [2023-09-03T21:27:04.630Z] Command:       /Users/Vernon/.nvm/versions/node/v16.4.1/bin/node /Users/Vernon/.nvm/versions/node/v16.4.1/bin/firebase deploy --only functions
+[debug] [2023-09-03T21:27:04.631Z] CLI Version:   11.14.2
+[debug] [2023-09-03T21:27:04.631Z] Platform:      darwin
+[debug] [2023-09-03T21:27:04.631Z] Node Version:  v16.4.1
+[debug] [2023-09-03T21:27:04.633Z] Time:          Sun Sep 03 2023 16:27:04 GMT-0500 (Colombia Standard Time)
+[debug] [2023-09-03T21:27:04.633Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-09-03T21:27:04.697Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-09-03T21:27:04.697Z] > authorizing via signed-in user (vroque88@gmail.com)
+[debug] [2023-09-03T21:27:04.697Z] [iam] checking project clone-bfd8a for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2023-09-03T21:27:04.698Z] > refreshing access token with scopes: []
+[debug] [2023-09-03T21:27:04.700Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-09-03T21:27:04.700Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-03T21:27:04.916Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2023-09-03T21:27:04.916Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-03T21:27:04.916Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/clone-bfd8a:testIamPermissions [none]
+[debug] [2023-09-03T21:27:04.916Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/clone-bfd8a:testIamPermissions x-goog-quota-user=projects/clone-bfd8a
+[debug] [2023-09-03T21:27:04.916Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clone-bfd8a:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2023-09-03T21:27:05.498Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/clone-bfd8a:testIamPermissions 401
+[debug] [2023-09-03T21:27:05.498Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/clone-bfd8a:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2023-09-03T21:27:05.499Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2023-09-03T21:27:05.500Z] > refreshing access token with scopes: []
+[debug] [2023-09-03T21:27:05.501Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-09-03T21:27:05.501Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-03T21:27:05.691Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2023-09-03T21:27:05.692Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-03T21:27:05.692Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/clone-bfd8a/serviceAccounts/clone-bfd8a@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-09-03T21:27:05.692Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/clone-bfd8a/serviceAccounts/clone-bfd8a@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-09-03T21:27:06.231Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/clone-bfd8a/serviceAccounts/clone-bfd8a@appspot.gserviceaccount.com:testIamPermissions 401
+[debug] [2023-09-03T21:27:06.231Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/clone-bfd8a/serviceAccounts/clone-bfd8a@appspot.gserviceaccount.com:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.iam.admin.v1.IAM.TestIamPermissions","service":"iam.googleapis.com"}}]}}
+[debug] [2023-09-03T21:27:06.231Z] [functions] service account IAM check errored, deploy may fail:HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project. {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.iam.admin.v1.IAM.TestIamPermissions","service":"iam.googleapis.com"}}]}},"response":{"statusCode":401}},"exit":1,"message":"HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":401}
+[info] 
+[info] === Deploying to 'clone-bfd8a'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2023-09-03T21:27:08.944Z] > refreshing access token with scopes: []
+[debug] [2023-09-03T21:27:08.944Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-09-03T21:27:08.944Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-03T21:27:09.128Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2023-09-03T21:27:09.129Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-09-03T21:27:09.131Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/clone-bfd8a [none]
+[debug] [2023-09-03T21:27:09.351Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/clone-bfd8a 401
+[debug] [2023-09-03T21:27:09.352Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/clone-bfd8a {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2023-09-03T21:27:09.352Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2023-09-03T21:27:09.511Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at responseToError (/Users/Vernon/.nvm/versions/node/v16.4.1/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/Users/Vernon/.nvm/versions/node/v16.4.1/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to get Firebase project clone-bfd8a. Please make sure the project exists and your account has permission to access it.

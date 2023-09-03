@@ -4,9 +4,10 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
-const stripe = require("stripe")("sk_test_51M1wozHZydbvlB4czjiM0fVGRenyMuuzaqLiv6jLi75WenozZtDJCiyS185tmzL2NzTxoTwySA2bmAAHnQSFTSAP00veiWGmw4");
+const stripe = require("stripe")(process.env.STRIPE_TEST_KEY);
 // eslint-disable-next-line max-len, no-unexpected-multiline
 
+require("dotenv").config();
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -30,16 +31,16 @@ app.use(express.json());
 app.get("/", (request, response) => response.status(200).send
 ("hello world"));
 // eslint-disable-next-line space-before-function-paren
-app.post("/payments/create", async(request, response) => {
+// changed 'query' to body
+app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
   console.log("Payment Request Received >>>", total);
-
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount: total, // subunits of the currency
       currency: "usd",
     });
-      // ok - created
+    // ok - created
     response.status(201).send({
       clientSecret: paymentIntent.client_secret,
     });

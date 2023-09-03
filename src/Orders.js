@@ -3,6 +3,7 @@ import {db} from "./firebase";
 import {useStateValue} from './StateProvider';
 import Order from './Order';
 import './Orders.css';
+import { Link } from 'react-router-dom';
 
 
 function Orders() {
@@ -30,7 +31,14 @@ function Orders() {
   },[user])
   return (
     <div className = "orders">
+      <div className="ordersHeader">
         <h1>Your Orders</h1>
+        <Link to="/">
+        <button className="ordersButton">Go Back Home</button>
+      </Link>
+
+      </div>
+        
 
         <div className = "orders-order">
           {orders?.map(order =>(

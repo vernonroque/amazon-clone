@@ -8,6 +8,7 @@ import CurrencyFormat from "react-currency-format";
 import {getBasketTotal} from "./reducer";
 import axios from './axios';
 import { db } from './firebase';
+//import instance from './axios';
 
 
 
@@ -24,41 +25,48 @@ function Payment() {
     const [processing, setProcessing] = useState("");
     const [error,setError] = useState(null);
     const [disabled,setDisabled] = useState(true);
-    const [clientSecret,setClientSecret] = useState(true);
+    const [clientSecret,setClientSecret] = useState('');
+    const [readyToSubmit, setReadyToSubmit] =useState(false);
 
-    
+    // function handlePurchase(){
+
+    //     setFormSubmit(true);
+    // }
 
     useEffect(() => {
         //generate the special stripe secret which allows us 
         //to charge a customer
+        if(basket)                      //had to put this condition to resolve Axios Network Error
+            setReadyToSubmit(true); 
 
         const getClientSecret = async () => {
-            console.log('The basket length>>>', basket.length );
-            console.log("ITEMS IN THE BASKET >>>", basket);
+           // console.log('The basket length>>>', basket.length );
+            //console.log("ITEMS IN THE BASKET >>>", basket);
         
             try{
                 const response = await axios({
                     method: 'post',
-                    url: `/payments/create?total=${(getBasketTotal(basket)*100)}` //Stripe expects the total in a currency's subunit
+                    url: `/payments/create?total=${getBasketTotal(basket)*100}` //Stripe expects the total in a currency's subunit
                 });
     
-                if(response){
-                    console.log("THIS IS THE RESPONSE", response);
-                    setClientSecret(response.data.clientSecret);
+                // if(response){
+                //     //console.log("THIS IS THE RESPONSE", response);
+                //     setClientSecret(response.data.clientSecret);
 
-                }
+                // }
+
+                setClientSecret(response.data.clientSecret);
                 
-            }catch(error){
+                }catch(error){
                 console.log("THE ERROR >>>", error);
             }
         }
         
-        if(basket){
-            getClientSecret();
-        }
-           
+            if(readyToSubmit)   //had to put this condition to resolve Axios Network Error
+             getClientSecret();   
 
-    },[basket]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[basket,readyToSubmit]);
 
     if(basket){
         console.log('THE CLIENT SECRET >>>', clientSecret);
@@ -67,17 +75,23 @@ function Payment() {
     console.log("THE USER >>>", user);
 
     const handleSubmit = async (e) => {
+      
         e.preventDefault();
         // fancy stripe stuff
+        if(!user){
+            alert('Please sign in before purchasing');
+            return;
+        }
         setProcessing(true);
 
         const payload = await stripe.confirmCardPayment(clientSecret , {
             payment_method: {
-                card: elements.getElement(CardElement)
+                card: elements.getElement(CardElement) 
             }
             }).then(({paymentIntent}) => {
             //paymentIntent = payment confirmation
-
+            //the piece of code above is how Stripe gets the information and gives us the clientSecret for the order
+                console.log('payment intent id', paymentIntent.id);
             db
                 .collection('users')
                 .doc(user?.uid)

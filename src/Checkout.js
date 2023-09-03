@@ -13,7 +13,7 @@ function Checkout() {
         <div className="checkout-left">
             <img 
                  className = "checkout-ad"
-                 src ="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T2/images/I/61jovjd+f9L._SX3000_.jpg"
+                 src ="../photos/Amazon-Banner.jpeg"
                  alt = "" />
 
             <div>

@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="home">
         <div className="home-container">
-            <img className="home-image" src="https://connect-assets.prosple.com/cdn/ff/zNryDlf-uf0qIh0kt7iOyMHP2B0NW30YDNDCOXMU-NM/1578558097/public/2020-01/Banner-Amazon-893x321-2020.jpg"
+            <img className="home-image" src="../photos/Amazon-Banner.jpeg"
             alt='home banner'
             />
 
@@ -15,7 +15,7 @@ function Home() {
                   id="12345"
                   title="The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses"
                   price={19.04}
-                  image="https://m.media-amazon.com/images/I/81-QB7nDh4L.jpg"
+                  image="../photos/Lean-Startup-Book.jpeg"
                   rating={5}
                 />
                 <Product
@@ -23,7 +23,7 @@ function Home() {
                   title="Kindle Paperwhite Signature Edition Essentials Bundle including Kindle Paperwhite Signature Edition 
                           - Wifi, Without Ads, Amazon Fabric Cover, and Wireless charging dock"
                   price={229.97}    
-                  image="https://m.media-amazon.com/images/G/01/kindle/journeys/5xlDnKG94P0ryVnD8MqFmnIhMKBXE2F2BxyzUQHa63Hhs3D/ZjBjZWUxMjIt._CB641064212_.jpg" 
+                  image="../photos/Kindle-Paperwhite.jpg" 
                   rating={5}  
                  />
             </div>
@@ -32,21 +32,21 @@ function Home() {
                 id="13524"
                 title="Ultimate Rare Card Bundle 100 Cards + 5 foil Cards, 5 Rare Cards, 5 Holo Rare Cards, 2 Ultra Rare Cards, Plus a LCC Box That is Compatible with Pokemon Cards"
                 price={29.99}
-                image="https://m.media-amazon.com/images/I/91ABiuNMdEL._AC_SL1500_.jpg"
+                image="../photos/pokemon-cards.jpg"
                 rating={5}
                 />
                 <Product
                  id="12435"
                 title="Xinlinke Tenor Saxophone Case Lightweight Soft Padded Bb Sax Gig Bag with Backpack Straps"
                 price={70.00}
-                image="https://m.media-amazon.com/images/I/51PeIqoZoZL._AC_SL1000_.jpg"
+                image="../photos/sax-case.jpg"
                 rating={5}
                 />
                 <Product
                 id="21345"
                 title="Apple 2021 10.2-inch iPad (Wi-Fi, 64GB) - Space Gray with AppleCare+ (2 Years)"
                 price={348}
-                image="https://m.media-amazon.com/images/I/61NGnpjoRDL._AC_SL1500_.jpg"
+                image="../photos/Apple-Ipad.jpg"
                 rating={5}
                 />
             </div>
@@ -55,7 +55,7 @@ function Home() {
                 id="54312"
                 title="BEIWO Puzzle-Starry Night by Vincent Van Gogh Jigsaw Puzzles, 1000 Piece Puzzles for Adults and Kids (Starry Night, Square-1000 Pieces)"
                 price={14.95}
-                image="https://m.media-amazon.com/images/I/81IvdxTfFaL._AC_SL1000_.jpg"
+                image="../photos/puzzles.jpg"
                 rating={5}
                 
                 />
