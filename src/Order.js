@@ -1,7 +1,8 @@
 import React from 'react';
 import moment from "moment";
 import CheckoutProduct from "./CheckoutProduct";
-import CurrencyFormat from "react-currency-format";
+// import CurrencyFormat from "react-currency-format";
+import currency from 'currency.js';
 import "./Order.css";
 
 function Order({order}) {
@@ -22,7 +23,7 @@ function Order({order}) {
                 hideButton
             />
         ))}
-        <CurrencyFormat
+        {/* <CurrencyFormat
             renderText = {(value) => (
                 <h3 className = "order-total">Order Total: {value}</h3>
             )}
@@ -32,9 +33,8 @@ function Order({order}) {
             thousandSeperator={true}
             prefix={"$"}
            
-        />
-       
-
+        /> */}
+                <h3 className = "order-total">Order Total:{currency((order.data.amount/100)).format()}</h3>
 
     </div>
   )

@@ -4,7 +4,8 @@ import './Payment.css';
 import {useStateValue} from './StateProvider';
 import {Link, useHistory} from 'react-router-dom';
 import {CardElement, useStripe, useElements} from "@stripe/react-stripe-js";
-import CurrencyFormat from "react-currency-format";
+// import CurrencyFormat from "react-currency-format";
+import currency from 'currency.js';
 import {getBasketTotal} from "./reducer";
 import axios from './axios';
 import { db } from './firebase';
@@ -171,25 +172,18 @@ function Payment() {
                     <form onSubmit = {handleSubmit}>
                         <CardElement onChange = {handleChange}/>
                         <div className = "payment-priceContainer">
-                            <CurrencyFormat
-                                renderText = {(value) => (
-                                    <>
-                                        <p>
-                                            {/* Part of hw */}
-                                            Subtotal ({basket?.length} items):<strong>{value}</strong>
-                                        </p>
-                                    
-                                        <small className = "subtotal-gift">
-                                            <input type="checkbox"/> This order contains a gift
-                                        </small>
-                                    </>
-                                )} 
-                                decimalScale={2}
-                                value={getBasketTotal(basket)} //part of hw
-                                displayType={"text"}
-                                thousandSeperator={true}
-                                prefix={"$"}
-                            />
+                        <>
+                         <p>
+                           {/* Part of hw */}
+                                     Subtotal ({basket?.length} items):<strong>{currency(getBasketTotal(basket)).format()}</strong>
+                                 </p>
+                            
+                                 <small className = "subtotal-gift">
+                                     <input type="checkbox"/> This order contains a gift
+                                 </small>
+                             </>
+                        
+                           
                             <button disabled = {processing || disabled || succeeded}>
                                 <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                             </button>
@@ -205,4 +199,25 @@ function Payment() {
   )
 }
 
+// hello world
+// <CurrencyFormat
+// renderText = {(value) => (
+//     <>
+//         <p>
+//             {/* Part of hw */}
+//             Subtotal ({basket?.length} items):<strong>{value}</strong>
+//         </p>
+    
+//         <small className = "subtotal-gift">
+//             <input type="checkbox"/> This order contains a gift
+//         </small>
+//     </>
+// )} 
+// decimalScale={2}
+// value={getBasketTotal(basket)} //part of hw
+// displayType={"text"}
+// thousandSeperator={true}
+// prefix={"$"}
+// />
+// hello world
 export default Payment

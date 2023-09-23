@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react';
 import './Subtotal.css';
-import CurrencyFormat from "react-currency-format";
+//import CurrencyFormat from "react-currency-format";
 import { useStateValue } from './StateProvider';
 import { getBasketTotal } from './reducer';
 import {useHistory} from 'react-router-dom';
+import currency from 'currency.js';
 
 function Subtotal() {
     const [{basket}, dispatch] = useStateValue();
@@ -30,31 +31,45 @@ function Subtotal() {
     
   return (
     <div className = "subtotal">
-        <CurrencyFormat
-            renderText = {(value) => (
+       
                 <>
                     <p>
                         {/* Part of hw */}
-                        Subtotal ({basket?.length} items):<strong>{value}</strong>
+                        Subtotal ({basket?.length} items):<strong>{currency(getBasketTotal(basket)).format()}</strong>
                     </p>
                    
                     <small className = "subtotal-gift">
                         <input type="checkbox"/> This order contains a gift
                     </small>
                 </>
-            )}
-            decimalScale={2}
-            value={getBasketTotal(basket)} //part of hw
-            displayType={"text"}
-            thousandSeperator={true}
-            prefix={"$"}
-           
-        />
+        
          <button onClick = {e => history.push('/payment')}> Proceed to Checkout</button>
     
     
     </div>
   )
 }
+
+// hello
+// renderText = {(value) => (
+//     <>
+//         <p>
+//             {/* Part of hw */}
+//             Subtotal ({basket?.length} items):<strong>{value}</strong>
+//         </p>
+       
+//         <small className = "subtotal-gift">
+//             <input type="checkbox"/> This order contains a gift
+//         </small>
+//     </>
+// )}
+// decimalScale={2}
+// value={getBasketTotal(basket)} //part of hw
+// displayType={"text"}
+// thousandSeperator={true}
+// prefix={"$"}
+
+// />
+// hello
 
 export default Subtotal
